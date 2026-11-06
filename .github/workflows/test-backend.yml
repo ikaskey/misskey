@@ -80,12 +80,6 @@ jobs:
       run: pnpm build
     - name: Test
       run: pnpm --filter backend ${{ matrix.coverage && 'test-and-coverage' || 'test' }}
-    - name: Upload to Codecov
-      if: ${{ matrix.coverage }}
-      uses: codecov/codecov-action@v7
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        files: ./packages/backend/coverage/coverage-final.json
 
   e2e:
     name: E2E tests (backend)
@@ -134,12 +128,6 @@ jobs:
         run: pnpm build
       - name: Test
         run: pnpm --filter backend ${{ matrix.coverage && 'test-and-coverage:e2e' || 'test:e2e' }}
-      - name: Upload to Codecov
-        if: ${{ matrix.coverage }}
-        uses: codecov/codecov-action@v7
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./packages/backend/coverage/coverage-final.json
 
   migration:
     name: Migration tests (backend)
