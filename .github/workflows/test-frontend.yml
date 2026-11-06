@@ -49,11 +49,6 @@ jobs:
       run: pnpm build
     - name: Test
       run: pnpm --filter frontend test-and-coverage
-    - name: Upload Coverage
-      uses: codecov/codecov-action@v7
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        files: ./packages/frontend/coverage/coverage-final.json
 
   e2e:
     name: E2E tests (frontend)
